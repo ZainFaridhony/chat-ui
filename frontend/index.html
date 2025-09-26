@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-50">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chat UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  </head>
+  <body class="h-full flex flex-col">
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur">
+      <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-semibold">AI Chat Playground</h1>
+          <p class="text-sm text-slate-400">Ask questions, upload files, and explore responses.</p>
+        </div>
+        <span class="text-xs font-mono text-slate-500">GPT-4 powered</span>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-hidden">
+      <div id="chatContainer" class="h-full overflow-y-auto max-w-4xl mx-auto px-4 py-6 space-y-4">
+        <!-- Messages will be injected here -->
+      </div>
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-900/80 backdrop-blur">
+      <form id="chatForm" class="max-w-4xl mx-auto px-4 py-4 space-y-3">
+        <div id="filePreview" class="flex flex-wrap gap-3"></div>
+        <div class="flex gap-3 items-end">
+          <label class="cursor-pointer inline-flex items-center justify-center rounded-lg border border-dashed border-slate-700 p-3 hover:border-slate-500 transition">
+            <input id="fileInput" type="file" class="hidden" multiple />
+            <span class="text-sm text-slate-300">➕ Attach</span>
+          </label>
+          <div class="flex-1">
+            <textarea
+              id="messageInput"
+              rows="2"
+              class="w-full resize-none rounded-xl border border-slate-700 bg-slate-900/60 px-4 py-3 text-sm focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+              placeholder="Ask anything..."
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="rounded-xl bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Send
+          </button>
+        </div>
+      </form>
+    </footer>
+
+    <template id="messageTemplate">
+      <div class="flex w-full">
+        <div class="message-bubble max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm"></div>
+      </div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
